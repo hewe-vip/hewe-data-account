@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="vip.hewe.data.dao.SubscriberDao">
+    <resultMap id="BaseResultMap" type="subscriber">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="login" jdbcType="VARCHAR" property="login" />
+        <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="salt" jdbcType="VARCHAR" property="salt" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, email, login, passwd, phone,salt
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from subscriber
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByidentity" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from subscriber
+        where phone = #{identity,jdbcType=VARCHAR} or login
+        = #{identity,jdbcType=VARCHAR}
+    </select>
+    <insert id="insert" parameterType="subscriber">
+        insert into subscriber
+        (id,email, login, passwd,
+        phone,salt)
+        values (#{id,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{login,jdbcType=VARCHAR},
+        #{passwd,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR},
+        #{salt,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="subscriber">
+        update subscriber
+        set email = #{email,jdbcType=VARCHAR},
+        login =
+        #{login,jdbcType=VARCHAR},
+        passwd = #{passwd,jdbcType=VARCHAR},
+        phone =
+        #{phone,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>
