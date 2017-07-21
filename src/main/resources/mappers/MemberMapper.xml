@@ -1,93 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vip.hewe.data.dao.MemberMapper">
-  <resultMap id="BaseResultMap" type="vip.hewe.data.domain.Member">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="cel" jdbcType="VARCHAR" property="cel" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
-    <result column="salt" jdbcType="VARCHAR" property="salt" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, cel, email, passwd, salt
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from member
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from member
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="vip.hewe.data.domain.Member">
-    insert into member (id, cel, email, 
-      passwd, salt)
-    values (#{id,jdbcType=VARCHAR}, #{cel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{passwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="vip.hewe.data.domain.Member">
-    insert into member
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="cel != null">
-        cel,
-      </if>
-      <if test="email != null">
-        email,
-      </if>
-      <if test="passwd != null">
-        passwd,
-      </if>
-      <if test="salt != null">
-        salt,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="cel != null">
-        #{cel,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="passwd != null">
-        #{passwd,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null">
-        #{salt,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.data.domain.Member">
-    update member
-    <set>
-      <if test="cel != null">
-        cel = #{cel,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null">
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="passwd != null">
-        passwd = #{passwd,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null">
-        salt = #{salt,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="vip.hewe.data.domain.Member">
-    update member
-    set cel = #{cel,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      passwd = #{passwd,jdbcType=VARCHAR},
-      salt = #{salt,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
+    <resultMap id="BaseResultMap" type="vip.hewe.data.domain.Member">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="cel" jdbcType="VARCHAR" property="cel"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="passwd" jdbcType="VARCHAR" property="passwd"/>
+        <result column="salt" jdbcType="VARCHAR" property="salt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, cel, email, passwd, salt
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from member
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectByCelPass" resultType="java.lang.String">
+        SELECT id
+        FROM member
+        WHERE cel = #{cel,jdbcType=VARCHAR} AND passwd = #{passwd, jdbcType=VARCHAR}
+    </select>
+    <select id="selectByEmailPass" resultType="java.lang.String">
+        SELECT id
+        FROM member
+        WHERE email = #{email,jdbcType=VARCHAR} AND passwd = #{passwd, jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM member
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="vip.hewe.data.domain.Member">
+        INSERT INTO member (id, cel, email,
+                            passwd, salt)
+        VALUES (#{id,jdbcType=VARCHAR}, #{cel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+                #{passwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="vip.hewe.data.domain.Member">
+        insert into member
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cel != null">
+                cel,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="passwd != null">
+                passwd,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="cel != null">
+                #{cel,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null">
+                #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.data.domain.Member">
+        update member
+        <set>
+            <if test="cel != null">
+                cel = #{cel,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null">
+                passwd = #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="vip.hewe.data.domain.Member">
+        UPDATE member
+        SET cel    = #{cel,jdbcType=VARCHAR},
+            email  = #{email,jdbcType=VARCHAR},
+            passwd = #{passwd,jdbcType=VARCHAR},
+            salt   = #{salt,jdbcType=VARCHAR}
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

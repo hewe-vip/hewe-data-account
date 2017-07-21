@@ -9,6 +9,17 @@ public class Member {
 
     private String passwd;
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", cel='" + cel + '\'' +
+                ", email='" + email + '\'' +
+                ", passwd='" + passwd + '\'' +
+                ", salt='" + salt + '\'' +
+                '}';
+    }
+
     private String salt;
 
     public String getId() {
