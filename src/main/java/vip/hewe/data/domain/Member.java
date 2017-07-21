@@ -2,9 +2,13 @@ package vip.hewe.data.domain;
 
 public class Member {
     private String id;
+
     private String cel;
+
     private String email;
+
     private String passwd;
+
     private String salt;
 
     public String getId() {
@@ -12,7 +16,7 @@ public class Member {
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
     public String getCel() {
@@ -20,7 +24,7 @@ public class Member {
     }
 
     public void setCel(String cel) {
-        this.cel = cel;
+        this.cel = cel == null ? null : cel.trim();
     }
 
     public String getEmail() {
@@ -28,7 +32,7 @@ public class Member {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getPasswd() {
@@ -36,7 +40,7 @@ public class Member {
     }
 
     public void setPasswd(String passwd) {
-        this.passwd = passwd;
+        this.passwd = passwd == null ? null : passwd.trim();
     }
 
     public String getSalt() {
@@ -44,6 +48,6 @@ public class Member {
     }
 
     public void setSalt(String salt) {
-        this.salt = salt;
+        this.salt = salt == null ? null : salt.trim();
     }
 }

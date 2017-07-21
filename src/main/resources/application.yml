@@ -3,8 +3,8 @@ mybatis:
   type-aliases-package: vip.hewe.data.domain
 spring:
   datasource:
-    url: jdbc:mysql://119.29.2.209:3306/endless
-    username: hewe
+    url: jdbc:mysql://119.29.2.209:3306/hewe_member
+    username: member
     password: Hewe_Ting_0824
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource

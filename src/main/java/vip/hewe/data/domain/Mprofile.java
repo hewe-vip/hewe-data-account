@@ -1,40 +1,45 @@
 package vip.hewe.data.domain;
 
+import java.util.Date;
+
 public class Mprofile {
-  private String id;
-  private String name;
-  private java.sql.Date bth;
-  private Long sex;
+    private String id;
 
-  public String getId() {
-    return id;
-  }
+    private String name;
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    private Date bth;
 
-  public String getName() {
-    return name;
-  }
+    private Integer sex;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public java.sql.Date getBth() {
-    return bth;
-  }
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-  public void setBth(java.sql.Date bth) {
-    this.bth = bth;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public Long getSex() {
-    return sex;
-  }
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-  public void setSex(Long sex) {
-    this.sex = sex;
-  }
+    public Date getBth() {
+        return bth;
+    }
+
+    public void setBth(Date bth) {
+        this.bth = bth;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
 }
