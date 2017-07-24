@@ -1,6 +1,8 @@
 package vip.hewe.data.service;
 
 import grpc.service.*;
+import io.grpc.Status;
+import io.grpc.StatusException;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,7 @@ public class SignService extends MemberDataServiceGrpc.MemberDataServiceImplBase
         log.info("insert:   {0}", member.toString());
         int result = memberMapper.insert(member);
         responseObserver.onNext(RecordMsg.newBuilder().setCount(result).build());
+        responseObserver.onCompleted();
         //验证邮箱和手机号
 //        if (!StringUtils.isEmpty(email) && Validator.isEmail(email)){
 //            member.setEmail(email);
@@ -60,8 +63,8 @@ public class SignService extends MemberDataServiceGrpc.MemberDataServiceImplBase
         Member member = memberMapper.selectByPrimaryKey(id);
         MemberMsg.Builder builder = MemberMsg.newBuilder();
         if (member == null) {
-            responseObserver.onNext(null);
-            responseObserver.onCompleted();
+            log.warn("user not found:   " + id);
+            responseObserver.onError(new StatusException(Status.NOT_FOUND));
             return;
         }
         MemberMsg memberMsg = builder.setCel(member.getCel()).setEmail(member.getEmail()).setId(member.getId()).build();
