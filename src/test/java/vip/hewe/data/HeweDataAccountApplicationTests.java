@@ -9,15 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StopWatch;
 import vip.hewe.data.domain.Member;
-import vip.hewe.data.service.SignException;
-import vip.hewe.data.service.SignService;
+import vip.hewe.data.handler.SignException;
+import vip.hewe.data.handler.SignHandler;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HeweDataAccountApplicationTests {
     Logger log = LoggerFactory.getLogger(HeweDataAccountApplication.class.getName());
     @Autowired
-    private SignService signService;
+    private SignHandler signService;
 
     @Test
     public void contextLoads() {

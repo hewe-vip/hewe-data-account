@@ -1,4 +1,4 @@
-package vip.hewe.data.service;
+package vip.hewe.data.handler;
 
 /**
  * 注册异常

@@ -8,6 +8,18 @@ public class Member {
     private String email;
 
     private String passwd;
+    private String salt;
+
+    public Member() {
+    }
+
+    public Member(String id, String cel, String email, String passwd, String salt) {
+        this.id = id;
+        this.cel = cel;
+        this.email = email;
+        this.passwd = passwd;
+        this.salt = salt;
+    }
 
     @Override
     public String toString() {
@@ -20,7 +32,6 @@ public class Member {
                 '}';
     }
 
-    private String salt;
 
     public String getId() {
         return id;
