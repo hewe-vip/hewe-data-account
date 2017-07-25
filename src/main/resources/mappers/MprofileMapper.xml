@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="vip.hewe.data.dao.MprofileMapper" >
-  <resultMap id="BaseResultMap" type="vip.hewe.data.domain.Mprofile" >
+  <resultMap id="BaseResultMap" type="vip.hewe.api.domain.Mprofile" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="bth" property="bth" jdbcType="DATE" />
@@ -20,13 +20,13 @@
     delete from mprofile
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="vip.hewe.data.domain.Mprofile" >
+  <insert id="insert" parameterType="vip.hewe.api.domain.Mprofile" >
     insert into mprofile (id, name, bth, sex
       )
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{bth,jdbcType=DATE}, #{sex,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="vip.hewe.data.domain.Mprofile" >
+  <insert id="insertSelective" parameterType="vip.hewe.api.domain.Mprofile" >
     insert into mprofile
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.data.domain.Mprofile" >
+  <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.api.domain.Mprofile" >
     update mprofile
     <set >
       <if test="name != null" >
@@ -72,7 +72,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="vip.hewe.data.domain.Mprofile" >
+  <update id="updateByPrimaryKey" parameterType="vip.hewe.api.domain.Mprofile" >
     update mprofile
     set name = #{name,jdbcType=VARCHAR},
       bth = #{bth,jdbcType=DATE},

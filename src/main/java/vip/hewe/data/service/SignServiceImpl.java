@@ -1,14 +1,15 @@
 package vip.hewe.data.service;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import vip.hewe.api.domain.Member;
+import vip.hewe.api.service.SignService;
 import vip.hewe.data.dao.MemberMapper;
-import vip.hewe.data.domain.Member;
 
 /**
  *
  */
-@Service
+@Service("signService")
 public class SignServiceImpl implements SignService {
 
     @Autowired

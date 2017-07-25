@@ -16,5 +16,6 @@
 
     <!-- 暴露服务 -->
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
-
+    <dubbo:service interface="vip.hewe.api.service.SignService"
+                   ref="signService" retries="0" timeout="6000" />
 </beans>

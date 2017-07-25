@@ -1,7 +1,7 @@
 package vip.hewe.data.dao;
 
 import org.apache.ibatis.annotations.Mapper;
-import vip.hewe.data.domain.Mprofile;
+import vip.hewe.api.domain.Mprofile;
 
 @Mapper
 public interface MprofileMapper {

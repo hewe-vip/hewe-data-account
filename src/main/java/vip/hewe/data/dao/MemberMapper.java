@@ -1,7 +1,7 @@
 package vip.hewe.data.dao;
 
 import org.apache.ibatis.annotations.Mapper;
-import vip.hewe.data.domain.Member;
+import vip.hewe.api.domain.Member;
 
 @Mapper
 public interface MemberMapper {
