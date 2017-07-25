@@ -3,6 +3,7 @@ package vip.hewe.data.handler;
 /**
  * 注册异常
  */
+@Deprecated
 public class SignException extends Exception {
     public SignException(String message) {
         super(message);

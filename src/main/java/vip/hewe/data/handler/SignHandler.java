@@ -19,6 +19,7 @@ import java.util.UUID;
  *
  */
 @Service
+@Deprecated
 public class SignHandler {
     private static final Logger log = LoggerFactory.getLogger(SignHandler.class.getName());
 
