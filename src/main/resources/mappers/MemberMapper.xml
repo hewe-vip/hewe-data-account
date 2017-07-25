@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="vip.hewe.data.dao.MemberMapper">
-    <resultMap id="BaseResultMap" type="vip.hewe.data.domain.Member">
+    <resultMap id="BaseResultMap" type="vip.hewe.api.domain.Member">
         <id column="id" jdbcType="VARCHAR" property="id"/>
         <result column="cel" jdbcType="VARCHAR" property="cel"/>
         <result column="email" jdbcType="VARCHAR" property="email"/>
@@ -31,13 +31,13 @@
         DELETE FROM member
         WHERE id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" parameterType="vip.hewe.data.domain.Member">
+    <insert id="insert" parameterType="vip.hewe.api.domain.Member">
         INSERT INTO member (id, cel, email,
                             passwd, salt)
         VALUES (#{id,jdbcType=VARCHAR}, #{cel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
                 #{passwd,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" parameterType="vip.hewe.data.domain.Member">
+    <insert id="insertSelective" parameterType="vip.hewe.api.domain.Member">
         insert into member
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -74,7 +74,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.data.domain.Member">
+    <update id="updateByPrimaryKeySelective" parameterType="vip.hewe.api.domain.Member">
         update member
         <set>
             <if test="cel != null">
@@ -92,7 +92,7 @@
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="vip.hewe.data.domain.Member">
+    <update id="updateByPrimaryKey" parameterType="vip.hewe.api.domain.Member">
         UPDATE member
         SET cel    = #{cel,jdbcType=VARCHAR},
             email  = #{email,jdbcType=VARCHAR},
